@@ -102,6 +102,16 @@ devices:
           - {factor: 0.1, name: Dc voltage 4, offset: 10, topic: /inverter/input/pv/dc/voltage/4, type: U16}
           - {factor: 0.1, name: Dc current 4, offset: 11, topic: /inverter/input/pv/dc/current/4, type: U16}
       - topic: ''
+        startRegister: 586
+        numberRegisters: 6
+        type: 3
+        registers:
+          - {factor: 0.01, name: Battery Temperature, offset: 0, topic: /battery/temperature, type: U16} #586
+          - {factor: 0.01, name: Battery Voltage, offset: 1, topic: /battery/voltage, type: U16} #587
+          - {factor: 1, name: Battery SOC, offset: 2, topic: /battery/soc, type: U16} #588
+          - {factor: 1, name: Battery Power, offset: 4, topic: /battery/power, type: U16} #590
+          - {factor: 0.01, name: Battery Current, offset: 5, topic: /battery/current, type: S16} #591   
+      - topic: ''
         startRegister: 514
         numberRegisters: 22
         type: 3
