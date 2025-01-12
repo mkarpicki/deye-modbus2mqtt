@@ -1,7 +1,5 @@
 package ua.net.maxx.mqtt2modbus;
 
-import com.ghgande.j2mod.modbus.Modbus;
-import com.ghgande.j2mod.modbus.util.SerialParameters;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -9,21 +7,23 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Timer;
-import org.yaml.snakeyaml.Yaml;
-import ua.net.maxx.mqtt2modbus.influx.InfluxDBStorageService;
-import ua.net.maxx.mqtt2modbus.modbus.ModbusService;
-import ua.net.maxx.mqtt2modbus.config.Config;
-import ua.net.maxx.mqtt2modbus.modbus.impl.ModbusServiceImpl;
-import ua.net.maxx.mqtt2modbus.mqtt.MqttSender;
-import ua.net.maxx.mqtt2modbus.mqtt.impl.MqttSenderImpl;
-import ua.net.maxx.mqtt2modbus.timer.BridgeTask;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.yaml.snakeyaml.Yaml;
+
+import com.ghgande.j2mod.modbus.Modbus;
+import com.ghgande.j2mod.modbus.util.SerialParameters;
+
+import ua.net.maxx.mqtt2modbus.config.Config;
+import ua.net.maxx.mqtt2modbus.modbus.ModbusService;
+import ua.net.maxx.mqtt2modbus.modbus.impl.ModbusServiceImpl;
+import ua.net.maxx.mqtt2modbus.mqtt.MqttSender;
+import ua.net.maxx.mqtt2modbus.timer.BridgeTask;
 
 public class Starter {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
         try {
@@ -37,17 +37,17 @@ public class Starter {
             portParams.setStopbits(1);
             portParams.setParity(0);
             portParams.setEncoding(Modbus.SERIAL_ENCODING_RTU);
-            MqttSender mqttSender = new MqttSenderImpl("tcp://mqtt.sng.maxx");
+            MqttSender mqttSender = null;
             ModbusService modbusService = new ModbusServiceImpl(portParams);
 
-            String token = "EBaj2gOeS6xuH4bba9L0R5H3qt2IXFPAfDd2CvyZJJM5Uyjoq96OE8I1c-UvdiZnT1mutcP33C8I0wbHqjHlvw==";
-            String url = "http://influx-db.sng.maxx:8086/";
-            String org = "sng-home";
-            String bucket = "energy";
+            //String token = "EBaj2gOeS6xuH4bba9L0R5H3qt2IXFPAfDd2CvyZJJM5Uyjoq96OE8I1c-UvdiZnT1mutcP33C8I0wbHqjHlvw==";
+            //String url = "http://influx-db.sng.maxx:8086/";
+            //String org = "sng-home";
+            //String bucket = "energy";
 
-            InfluxDBStorageService influxDb = new InfluxDBStorageService(config.getInflux());
+            //InfluxDBStorageService influxDb = new InfluxDBStorageService(config.getInflux());
             BridgeTask bridgeTask = new BridgeTask(mqttSender, modbusService, config);
-            bridgeTask.addListener(influxDb);
+            //bridgeTask.addListener(influxDb);
             Timer timer1 = new Timer();
             timer1.schedule(bridgeTask, Starter.getNextStartDate(), 10000);
             logger.info("Bridge Timer scheduled");

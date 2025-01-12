@@ -1,5 +1,5 @@
 modbus:
-  port: COM6
+  port: COM9
   rate: 9600
 influx:
   token: token

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Config {
     private ModbusPort modbus;
-    private InfluxDbConfig influx;
+    //private InfluxDbConfig influx;
 
     private MqttConfig mqtt;
 
@@ -34,11 +34,11 @@ public class Config {
         this.devices = devices;
     }
 
-    public InfluxDbConfig getInflux() {
-        return influx;
-    }
+    // public InfluxDbConfig getInflux() {
+    //     return influx;
+    // }
 
-    public void setInflux(InfluxDbConfig influx) {
-        this.influx = influx;
-    }
+    // public void setInflux(InfluxDbConfig influx) {
+    //     this.influx = influx;
+    // }
 }
