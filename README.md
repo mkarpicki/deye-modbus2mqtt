@@ -8,7 +8,38 @@ Tested with: Deye SUN-12K-SG04LP3-EU
 - push data to InfluxDB
 
 # TODO
-- Implement reading data for more that 1 register (Hi/Low values)
+- Focus on
+LOAD
+now : sum up
+/DEYE/inverter/load/phase/C/power
+/DEYE/inverter/load/phase/B/power
+/DEYE/inverter/load/phase/A/power
+
+/inverter/stat/power/load/day
+
+GRID
+/inverter/stat/grid/power/buy/today
+/inverter/stat/grid/power/sell/today
+(lub /DEYE/inverter/stat/grid/power/sell/today)
+
+sum now?
+/DEYE/grid/out/phase/A/power
+/DEYE/grid/out/phase/B/power
+/DEYE/grid/out/phase/C/power
+/DEYE/grid/in/phase/A/power
+/DEYE/grid/in/phase/B/power
+/DEYE/grid/in/phase/C/power
+
+
+battery
+
+/inverter/stat/battery/charge/today
+/inverter/stat/battery/discharge/today
+/battery/temperature
+/battery/soc
+/battery/power
+
+
 
 #Install on PRI
 - prepare jar (mvn  package)
@@ -24,5 +55,7 @@ Tested with: Deye SUN-12K-SG04LP3-EU
 
 https://kellerza.github.io/sunsynk/guide/wiring
 https://solarenergyconcepts.co.uk/practical-and-diy/crc-error-solar-assistant/
+
+
 
 
