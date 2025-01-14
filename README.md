@@ -20,3 +20,9 @@ Tested with: Deye SUN-12K-SG04LP3-EU
 
 ![Grafana dashboard example](docs/dashboard_example.png "Grafana dashboard example")
 
+# Useful links
+
+https://kellerza.github.io/sunsynk/guide/wiring
+https://solarenergyconcepts.co.uk/practical-and-diy/crc-error-solar-assistant/
+
+
