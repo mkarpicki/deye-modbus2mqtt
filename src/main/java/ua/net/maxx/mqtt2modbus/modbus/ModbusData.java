@@ -1,6 +1,7 @@
 package ua.net.maxx.mqtt2modbus.modbus;
 
 import java.math.BigDecimal;
+
 import ua.net.maxx.mqtt2modbus.config.ValueType;
 
 public class ModbusData {
@@ -11,6 +12,10 @@ public class ModbusData {
     private String topic;
     private ValueType type;
 
+    //hacky way to decorate by channel info
+    private int channelId;
+    private int channelField;
+
     public ModbusData() {
 
     }
@@ -19,6 +24,22 @@ public class ModbusData {
         this.offset = offset;
         this.name = name;
         this.factor = factor;
+    }
+
+    public int getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(int channelId) {
+        this.channelId = channelId;
+    }
+
+    public int getChannelField() {
+        return channelField;
+    }
+
+    public void setChannelField(int channelField) {
+        this.channelField = channelField;
     }
 
     public String getValue() {
