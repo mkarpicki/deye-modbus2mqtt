@@ -1,24 +1,26 @@
 package ua.net.maxx.mqtt2modbus.modbus.impl;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.AbstractModbusMaster;
 import com.ghgande.j2mod.modbus.facade.ModbusSerialMaster;
 import com.ghgande.j2mod.modbus.procimg.InputRegister;
 import com.ghgande.j2mod.modbus.procimg.Register;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+
 import ua.net.maxx.mqtt2modbus.config.Device;
 import ua.net.maxx.mqtt2modbus.config.ValueType;
 import ua.net.maxx.mqtt2modbus.modbus.ModbusService;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class ModbusServiceImpl implements ModbusService {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     private final SerialParameters portParams;
     private final AbstractModbusMaster master;

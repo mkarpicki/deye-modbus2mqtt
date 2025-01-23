@@ -23,12 +23,12 @@ GRID
 (lub /DEYE/inverter/stat/grid/power/sell/today)
 
 sum now?
-/DEYE/grid/out/phase/A/power
-/DEYE/grid/out/phase/B/power
-/DEYE/grid/out/phase/C/power
-/DEYE/grid/in/phase/A/power
-/DEYE/grid/in/phase/B/power
-/DEYE/grid/in/phase/C/power
+/grid/out/phase/A/power
+/grid/out/phase/B/power
+/grid/out/phase/C/power
+/grid/in/phase/A/power
+/grid/in/phase/B/power
+/grid/in/phase/C/power
 
 
 battery

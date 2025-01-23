@@ -28,7 +28,7 @@ public class Starter {
     public static void main(String[] args) {
         try {
             Yaml yaml = new Yaml();
-            InputStream inputStream = new BufferedInputStream(new FileInputStream("config.yaml"));
+            InputStream inputStream = new BufferedInputStream(new FileInputStream("config_lite.yaml"));
             Config config = yaml.loadAs(inputStream, Config.class);
 
             SerialParameters portParams = new SerialParameters();
@@ -37,7 +37,7 @@ public class Starter {
             portParams.setStopbits(1);
             portParams.setParity(0);
             portParams.setEncoding(Modbus.SERIAL_ENCODING_RTU);
-            MqttSender mqttSender = null;
+            MqttSender mqttSender = null; //new MqttSenderImpl("tcp://mqtt.url");
             ModbusService modbusService = new ModbusServiceImpl(portParams);
 
             //String token = "EBaj2gOeS6xuH4bba9L0R5H3qt2IXFPAfDd2CvyZJJM5Uyjoq96OE8I1c-UvdiZnT1mutcP33C8I0wbHqjHlvw==";
