@@ -37,13 +37,8 @@ public class Starter {
             portParams.setStopbits(1);
             portParams.setParity(0);
             portParams.setEncoding(Modbus.SERIAL_ENCODING_RTU);
-            MqttSender mqttSender = null; //new MqttSenderImpl("tcp://mqtt.url");
+            MqttSender mqttSender = null; //new MqttSenderImpl("");
             ModbusService modbusService = new ModbusServiceImpl(portParams);
-
-            //String token = "EBaj2gOeS6xuH4bba9L0R5H3qt2IXFPAfDd2CvyZJJM5Uyjoq96OE8I1c-UvdiZnT1mutcP33C8I0wbHqjHlvw==";
-            //String url = "http://influx-db.sng.maxx:8086/";
-            //String org = "sng-home";
-            //String bucket = "energy";
 
             //InfluxDBStorageService influxDb = new InfluxDBStorageService(config.getInflux());
             BridgeTask bridgeTask = new BridgeTask(mqttSender, modbusService, config);
