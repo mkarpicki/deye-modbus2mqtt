@@ -13,7 +13,7 @@ import io.reactivex.annotations.Nullable;
 import ua.net.maxx.mqtt2modbus.config.Config;
 import ua.net.maxx.mqtt2modbus.config.Device;
 import ua.net.maxx.mqtt2modbus.modbus.ModbusService;
-import ua.net.maxx.mqtt2modbus.mqtt.MqttSender;
+import ua.net.maxx.mqtt2modbus.thingspeak.ThingSpeakSender;
 
 public class BridgeTask extends TimerTask {
 
@@ -24,10 +24,12 @@ public class BridgeTask extends TimerTask {
     @Nullable
     //private final MqttSender mqttSender;
     private final ModbusService modbusService;
+    private final ThingSpeakSender thingSpeakSender;
     private final List<Device> devices;
 
-    public BridgeTask(MqttSender mqttSender, ModbusService modbusService, Config config) {
+    public BridgeTask(ThingSpeakSender thingSpeakSender, ModbusService modbusService, Config config) {
         //this.mqttSender = mqttSender;
+        this.thingSpeakSender = thingSpeakSender;
         this.modbusService = modbusService;
         this.devices = config.getDevices();
     }
@@ -42,11 +44,13 @@ public class BridgeTask extends TimerTask {
                 //mqttSender.send(entry.getKey(), entry.getValue());
                 logger.trace("topic: {}, payload: {}", entry.getKey(), entry.getValue());
                 System.out.println("topic: {}, payload: {} " + entry.getKey() + " " + entry.getValue());
+                thingSpeakSender.add(entry.getKey(), entry.getValue());
             });
         });
         logger.debug("Task finished");
         System.out.println("Task finished");
         System.out.println("");
+        thingSpeakSender.send();
     }
 
     public void addListener(DataListener listener) {
