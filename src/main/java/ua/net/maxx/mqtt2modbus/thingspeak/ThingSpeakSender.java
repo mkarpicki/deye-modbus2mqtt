@@ -10,8 +10,8 @@ public class ThingSpeakSender {
         private final String apiHost = "https://api.thingspeak.com";
         //private int channelId;
         private String apiKey;
-        private String[] fields;
         private final short FIELDS_SIZE = 8; 
+        private final String[] fields = new String[FIELDS_SIZE + 1];
 
         // public void setChannelId(int channelId) {
         //     this.channelId = channelId;

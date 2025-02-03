@@ -8,6 +8,9 @@ Tested with: Deye SUN-12K-SG04LP3-EU
 - push data to InfluxDB
 
 # TODO
+
+https://github.com/kbialek/deye-inverter-mqtt/blob/main/ha_definitions/deye_hybrid_map.yaml
+
 - Focus on
 LOAD
 now : sum up

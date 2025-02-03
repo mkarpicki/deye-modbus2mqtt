@@ -32,7 +32,7 @@ public class Starter {
     public static void main(String[] args) {
         try {
             Yaml yaml = new Yaml();
-            InputStream inputStream = new BufferedInputStream(new FileInputStream("config_lite.yaml"));
+            InputStream inputStream = new BufferedInputStream(new FileInputStream("deye_config_lite.yaml"));
             Config config = yaml.loadAs(inputStream, Config.class);
 
             JsonReader reader = new JsonReader(new FileReader("mapping.json"));
@@ -42,7 +42,12 @@ public class Starter {
             ThingSpeakSender thingSpeakSender = new ThingSpeakSender(mapping);
 
             // @todo REMOVE ME AFTER TEST :)
-            thingSpeakSender.add("/battery/soc", "21");
+            // thingSpeakSender.add("/battery/soc", "21");
+            // thingSpeakSender.add("/battery/temperature", "22");
+            // thingSpeakSender.add("/battery/power", "23");
+            // thingSpeakSender.add("/grid/out/phase/A/power", "5");
+            // thingSpeakSender.add("/inverter/load/phase/A/power", "55.6");
+            // thingSpeakSender.send();
 
             SerialParameters portParams = new SerialParameters();
             portParams.setPortName(config.getModbus().getPort());
