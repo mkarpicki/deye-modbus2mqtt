@@ -57,19 +57,18 @@ public class ThingSpeakSender {
 
     }
 
-    //private Mapping[] mappings;
+    private final HashMap<String, Channel> channels; 
     private final HashMap<String, Mapping> mappings;
-    //private List<Mapping> mappings;
-    //private ArrayList<Mapping> mappings;
     private final HashMap<String, ThingSpeakRequest> requests;
     
 
-    public ThingSpeakSender(Mapping[] mappings) {
+    public ThingSpeakSender(Mapping[] mappings, Channel[] channels) {
         //this.mappings = mappings;
         //this.mappings = new ArrayList<Mapping>(Arrays.asList(mappings));
         //this.mappings = Arrays.asList(mappings);
         this.requests = new HashMap<>();
         this.mappings = this.buildMappings(mappings);
+        this.channels = this.buildChannels(channels);
     }
 
     public ThingSpeakRequest getRequest(int channelId) {
@@ -83,10 +82,15 @@ public class ThingSpeakSender {
     public void add(String topic, String value) {
         Mapping mapping = mappings.get(topic);
         int channelId = mapping.getChannelId();
+        String sChannelId = Integer.toString(channelId);
         short channelField = mapping.getChannelField();        
         ThingSpeakRequest request = getRequest(channelId);
+        Channel c = this.channels.get(sChannelId);
 
-        request.setField(channelField, value);
+        if (c != null) {
+            request.setApiKey(c.getApiKey());
+            request.setField(channelField, value);
+        }
     }
 
     public void send() {
@@ -94,6 +98,19 @@ public class ThingSpeakSender {
             request.send();
             request.clear();
         });
+    }
+
+    private HashMap<String, Channel> buildChannels(Channel[] channels) {
+        HashMap<String, Channel> hashChannels = new HashMap<>();
+        short length = ((short) channels.length);
+        short i;
+
+        for (i = 0; i < length; i++) {
+            Channel c = channels[i];
+            hashChannels.put(Integer.toString(c.getChannelId()), c);
+        }
+
+        return hashChannels;
     }
 
     private HashMap<String, Mapping> buildMappings(Mapping[] mappings) {
@@ -109,7 +126,4 @@ public class ThingSpeakSender {
         
     }
 
-    private void flush() {
-        //this.requests.clear();
-    }
 }

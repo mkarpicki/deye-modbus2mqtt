@@ -7,43 +7,6 @@ Tested with: Deye SUN-12K-SG04LP3-EU
 - push data to MQTT
 - push data to InfluxDB
 
-# TODO
-
-https://github.com/kbialek/deye-inverter-mqtt/blob/main/ha_definitions/deye_hybrid_map.yaml
-
-- Focus on
-LOAD
-now : sum up
-/DEYE/inverter/load/phase/C/power
-/DEYE/inverter/load/phase/B/power
-/DEYE/inverter/load/phase/A/power
-
-/inverter/stat/power/load/day
-
-GRID
-/inverter/stat/grid/power/buy/today
-/inverter/stat/grid/power/sell/today
-(lub /DEYE/inverter/stat/grid/power/sell/today)
-
-sum now?
-/grid/out/phase/A/power
-/grid/out/phase/B/power
-/grid/out/phase/C/power
-/grid/in/phase/A/power
-/grid/in/phase/B/power
-/grid/in/phase/C/power
-
-
-battery
-
-/inverter/stat/battery/charge/today
-/inverter/stat/battery/discharge/today
-/battery/temperature
-/battery/soc
-/battery/power
-
-
-
 #Install on PRI
 - prepare jar (mvn  package)
 - prepare config file
@@ -58,6 +21,7 @@ battery
 
 https://kellerza.github.io/sunsynk/guide/wiring
 https://solarenergyconcepts.co.uk/practical-and-diy/crc-error-solar-assistant/
+https://github.com/kbialek/deye-inverter-mqtt/blob/main/ha_definitions/deye_hybrid_map.yaml
 
 
 

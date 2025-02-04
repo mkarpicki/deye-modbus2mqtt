@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import ua.net.maxx.mqtt2modbus.config.Config;
 import ua.net.maxx.mqtt2modbus.modbus.ModbusService;
 import ua.net.maxx.mqtt2modbus.modbus.impl.ModbusServiceImpl;
+import ua.net.maxx.mqtt2modbus.thingspeak.Channel;
 import ua.net.maxx.mqtt2modbus.thingspeak.Mapping;
 import ua.net.maxx.mqtt2modbus.thingspeak.ThingSpeakSender;
 import ua.net.maxx.mqtt2modbus.timer.BridgeTask;
@@ -35,13 +36,18 @@ public class Starter {
             InputStream inputStream = new BufferedInputStream(new FileInputStream("deye_config_lite.yaml"));
             Config config = yaml.loadAs(inputStream, Config.class);
 
-            JsonReader reader = new JsonReader(new FileReader("mapping.json"));
             Gson g = new Gson();
+            JsonReader reader;
+            
+            reader = new JsonReader(new FileReader("mapping.json"));            
             Mapping[] mapping = g.fromJson(reader, Mapping[].class);
 
-            ThingSpeakSender thingSpeakSender = new ThingSpeakSender(mapping);
+            reader = new JsonReader(new FileReader("thingspeak_config.json"));  
+            Channel[] channels = g.fromJson(reader, Channel[].class); 
 
-            // @todo REMOVE ME AFTER TEST :)
+            ThingSpeakSender thingSpeakSender = new ThingSpeakSender(mapping, channels);
+
+            // // @todo REMOVE ME AFTER TEST :)
             // thingSpeakSender.add("/battery/soc", "21");
             // thingSpeakSender.add("/battery/temperature", "22");
             // thingSpeakSender.add("/battery/power", "23");
