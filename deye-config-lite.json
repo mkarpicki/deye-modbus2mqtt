@@ -6,8 +6,29 @@
     "devices": [
       {
         "deviceId": 1,
-        "topic": "/DEYE",
+        "topic": "",
         "data": [
+          {
+            "topic": "",
+            "startRegister": 500,
+            "numberRegisters": 1,
+            "type": 3,  
+            "registers": [
+              { "factor": 1, "name": "Run state", "offset": 0, "topic": "/inverter/run/state", "type": "U16" }
+            ]          
+          },   
+          {
+            "topic": "",
+            "startRegister": 664,
+            "numberRegisters": 5,
+            "type": 3,  
+            "registers": [
+              { "factor": 1, "name": "Microinverter Gen Port A power", "offset": 0, "topic": "/ac/generator/a/power", "type": "S16" },
+              { "factor": 1, "name": "Microinverter Gen Port B power", "offset": 1, "topic": "/ac/generator/b/power", "type": "S16" },
+              { "factor": 1, "name": "Microinverter Gen Port C power", "offset": 2, "topic": "/ac/generator/c/power", "type": "S16" },
+              { "factor": 1, "name": "Microinverter Gen Port Total power", "offset": 3, "topic": "/ac/generator/total/power", "type": "S16" }
+            ]          
+          },                   
           {
             "topic": "",
             "startRegister": 604,
@@ -55,6 +76,32 @@
               { "factor": 0.1, "name": "Day_GridBuy_Power Wh", "offset": 6, "topic": "/inverter/stat/grid/power/buy/today", "type": "U16" },
               { "factor": 0.1, "name": "Day_GridSell_Power Wh", "offset": 7, "topic": "/inverter/stat/grid/power/sell/today", "type": "U16" },
               { "factor": 0.1, "name": "Day_Load_Power Wh", "offset": 12, "topic": "/inverter/stat/power/load/day", "type": "U16" }
+            ]
+          },
+          {
+            "topic": "",
+            "startRegister": 627,
+            "numberRegisters": 11,
+            "type": 3,
+            "registers": [
+              {"factor": 1, "name": "Inverter output phase power A", "offset": 6, "topic": "/inverter/output/phase/A/power", "type": "S16" },
+              {"factor": 1, "name": "Inverter output phase power B", "offset": 7, "topic": "/inverter/output/phase/B/power", "type": "S16" },
+              {"factor": 1, "name": "Inverter output phase power C", "offset": 8, "topic": "/inverter/output/phase/C/power", "type": "S16" },
+              {"factor": 1, "name": "Inverter output total power", "offset": 9, "topic": "/inverter/output/phase/total/power", "type": "S16" }
+           ] 
+          },
+          {
+            "topic": "",
+            "startRegister": 553,
+            "numberRegisters": 6,
+            "type": 3,
+            "registers": [
+              { "factor": 1, "name": "Alert 1", "offset": 0, "topic": "/inverter/alerts/1", "type": "U16" },
+              { "factor": 1, "name": "Alert 2", "offset": 1, "topic": "/inverter/alerts/2", "type": "U16" },
+              { "factor": 1, "name": "Alert 3", "offset": 2, "topic": "/inverter/alerts/3", "type": "U16" },
+              { "factor": 1, "name": "Alert 4", "offset": 3, "topic": "/inverter/alerts/4", "type": "U16" },
+              { "factor": 1, "name": "Alert 5", "offset": 4, "topic": "/inverter/alerts/5", "type": "U16" },
+              { "factor": 1, "name": "Alert 6", "offset": 5, "topic": "/inverter/alerts/6", "type": "U16" }
             ]
           }
         ]

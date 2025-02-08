@@ -22,11 +22,11 @@ public class ModbusServiceImpl implements ModbusService {
 
     private static final Logger logger = LogManager.getLogger();
 
-    private final SerialParameters portParams;
+    //private final SerialParameters portParams;
     private final AbstractModbusMaster master;
 
     public ModbusServiceImpl(SerialParameters portParams) throws Exception {
-        this.portParams = portParams;
+        //this.portParams = portParams;
         this.master = new ModbusSerialMaster(portParams);
         this.master.setTimeout(1000);
         this.master.setRetries(1);
