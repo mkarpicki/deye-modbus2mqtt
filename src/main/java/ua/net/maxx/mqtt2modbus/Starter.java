@@ -1,9 +1,6 @@
 package ua.net.maxx.mqtt2modbus;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -11,7 +8,6 @@ import java.util.Timer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.yaml.snakeyaml.Yaml;
 
 import com.ghgande.j2mod.modbus.Modbus;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
@@ -32,18 +28,25 @@ public class Starter {
 
     public static void main(String[] args) {
         try {
+            /*
             Yaml yaml = new Yaml();
             InputStream inputStream = new BufferedInputStream(new FileInputStream("deye_config_lite.yaml"));
             Config config = yaml.loadAs(inputStream, Config.class);
-
+            */
+            
             Gson g = new Gson();
             JsonReader reader;
             
-            reader = new JsonReader(new FileReader("mapping.json"));            
+            reader = new JsonReader(new FileReader("deye-config-lite.json")); 
+            Config config = g.fromJson(reader, Config.class);
+
+            reader = new JsonReader(new FileReader("deye-thingspeak-mapping.json"));            
             Mapping[] mapping = g.fromJson(reader, Mapping[].class);
 
-            reader = new JsonReader(new FileReader("thingspeak_config.json"));  
+            reader = new JsonReader(new FileReader("thingspeak-config.json"));  
             Channel[] channels = g.fromJson(reader, Channel[].class); 
+
+            reader.close();
 
             ThingSpeakSender thingSpeakSender = new ThingSpeakSender(mapping, channels);
 

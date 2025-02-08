@@ -1,8 +1,6 @@
 modbus:
   port: COM10
   rate: 9600
-mqtt:
-  url: tcp://host
 devices:
   - deviceId: 1
     topic: /DEYE
