@@ -68,18 +68,44 @@ public class Starter {
             portParams.setStopbits(1);
             portParams.setParity(0);
             portParams.setEncoding(Modbus.SERIAL_ENCODING_RTU);
-            //MqttSender mqttSender = null; //new MqttSenderImpl("");
-            ModbusService modbusService = new ModbusServiceImpl(portParams);
+            
+            // ModbusService modbusService = new ModbusServiceImpl(portParams);
 
-            //InfluxDBStorageService influxDb = new InfluxDBStorageService(config.getInflux());
-            BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
-            //bridgeTask.addListener(influxDb);
-            Timer timer1 = new Timer();
-            timer1.schedule(bridgeTask, Starter.getNextStartDate(), 10000);
+            // //InfluxDBStorageService influxDb = new InfluxDBStorageService(config.getInflux());
+            // BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
+            // //bridgeTask.addListener(influxDb);
+            // Timer timer1 = new Timer();
+            // timer1.schedule(bridgeTask, Starter.getNextStartDate(), 10000);
+
+            start(portParams, thingSpeakSender, config);
+
             logger.info("Bridge Timer scheduled");
         } catch (Exception e) {
             logger.error("Error starting app", e);
         }
+    }
+
+    private static void start(SerialParameters portParams, ThingSpeakSender thingSpeakSender, Config config) throws Exception {
+
+        short i = 0;
+        short tries = 3;
+        short delayInSeconds = 3 * 1000;
+
+        while(true) {
+            try {
+                ModbusService modbusService = new ModbusServiceImpl(portParams);
+
+                BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
+                Timer timer1 = new Timer();
+                timer1.schedule(bridgeTask, Starter.getNextStartDate(), 10000);
+                return;
+            } catch (Exception e) {
+                // handle exception
+                Thread.sleep(delayInSeconds);
+                if (++i == tries) throw e;
+            }
+        }
+
     }
 
     private static Date getNextStartDate() {

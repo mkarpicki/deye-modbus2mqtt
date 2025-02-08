@@ -23,9 +23,3 @@ https://kellerza.github.io/sunsynk/guide/wiring
 https://solarenergyconcepts.co.uk/practical-and-diy/crc-error-solar-assistant/
 https://github.com/kbialek/deye-inverter-mqtt/blob/main/ha_definitions/deye_hybrid_map.yaml
 
-# todo
-# stop tracking config.json (make fake keys)
-# implement RS connection failure restoring 
-# build service & run 
-
-
