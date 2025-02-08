@@ -69,14 +69,6 @@ public class Starter {
             portParams.setParity(0);
             portParams.setEncoding(Modbus.SERIAL_ENCODING_RTU);
             
-            // ModbusService modbusService = new ModbusServiceImpl(portParams);
-
-            // //InfluxDBStorageService influxDb = new InfluxDBStorageService(config.getInflux());
-            // BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
-            // //bridgeTask.addListener(influxDb);
-            // Timer timer1 = new Timer();
-            // timer1.schedule(bridgeTask, Starter.getNextStartDate(), 10000);
-
             start(portParams, thingSpeakSender, config);
 
             logger.info("Bridge Timer scheduled");
@@ -90,6 +82,7 @@ public class Starter {
         short i = 0;
         short tries = 3;
         short delayInSeconds = 3 * 1000;
+        short modbusTimeScheduleInSeconds = 15 * 1000;
 
         while(true) {
             try {
@@ -97,7 +90,7 @@ public class Starter {
 
                 BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
                 Timer timer1 = new Timer();
-                timer1.schedule(bridgeTask, Starter.getNextStartDate(), 10000);
+                timer1.schedule(bridgeTask, Starter.getNextStartDate(), modbusTimeScheduleInSeconds);
                 return;
             } catch (Exception e) {
                 // handle exception
