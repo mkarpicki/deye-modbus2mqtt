@@ -2,28 +2,24 @@ package ua.net.maxx.mqtt2modbus.thingspeak;
 
 import java.util.HashMap;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.ranges.RangeException;
 
 public class ThingSpeakSender {
 
     private class ThingSpeakRequest {
         private final String apiHost = "https://api.thingspeak.com";
-        //private int channelId;
-        private String apiKey;
+        private final int channelId;
+        private final String apiKey;
         private final short FIELDS_SIZE = 8; 
         private final String[] fields = new String[FIELDS_SIZE + 1];
 
-        // public void setChannelId(int channelId) {
-        //     this.channelId = channelId;
-        // }
-
-        public ThingSpeakRequest(String apiKey) {
+        public ThingSpeakRequest(int channelId, String apiKey) {
+            this.channelId = channelId;
             this.apiKey = apiKey;
         }
 
-        public void setApiKey(String apiKey) {
-            this.apiKey = apiKey;
-        }
         public void setField(short position, String value) throws RangeException {
             if (position < 1 || position > FIELDS_SIZE) {
                 throw new RangeException(position, "is position out of array range (1 - " + FIELDS_SIZE + ")");
@@ -41,21 +37,26 @@ public class ThingSpeakSender {
         public short send() {
             StringBuilder url = new StringBuilder(apiHost);
             short i;
+            boolean doSend = false;
 
             url.append("/update?api_key=").append(this.apiKey);
             
             for (i = 1; i <= FIELDS_SIZE; i++) {
                 if (!"".equals(fields[i]) && fields[i] != null) {
                     url.append("&field").append(i).append("=").append(fields[i]);
+                    doSend = true;
                 }
             }
-            System.out.println("send");
-            System.out.println(url.toString());
-            
+            if (doSend) {
+                System.out.println(url.toString());
+            }
+
             return 200;
         }
 
     }
+
+    private static final Logger logger = LogManager.getLogger();
 
     private final HashMap<String, Channel> channels; 
     private final HashMap<String, Mapping> mappings;
@@ -63,9 +64,6 @@ public class ThingSpeakSender {
     
 
     public ThingSpeakSender(Mapping[] mappings, Channel[] channels) {
-        //this.mappings = mappings;
-        //this.mappings = new ArrayList<Mapping>(Arrays.asList(mappings));
-        //this.mappings = Arrays.asList(mappings);
         this.requests = new HashMap<>();
         this.mappings = this.buildMappings(mappings);
         this.channels = this.buildChannels(channels);
@@ -74,23 +72,38 @@ public class ThingSpeakSender {
     public ThingSpeakRequest getRequest(int channelId) {
         String sChannelId = Integer.toString(channelId);
         if (!this.requests.containsKey(sChannelId)) {
-            this.requests.put(sChannelId, new ThingSpeakRequest("xxx"));    
+            Channel c = this.channels.get(sChannelId);
+            if (c != null) {
+                ThingSpeakRequest r = new ThingSpeakRequest(channelId, c.getApiKey());
+                this.requests.put(sChannelId, r);    
+                return r; 
+            } else {
+                //todo consider raising exception
+                logger.error("No apiKey for channel: [" + sChannelId + "]");
+            }
+               
         }        
         return this.requests.get(sChannelId);
     }
 
     public void add(String topic, String value) {
         Mapping mapping = mappings.get(topic);
-        int channelId = mapping.getChannelId();
-        String sChannelId = Integer.toString(channelId);
-        short channelField = mapping.getChannelField();        
-        ThingSpeakRequest request = getRequest(channelId);
-        Channel c = this.channels.get(sChannelId);
 
-        if (c != null) {
-            request.setApiKey(c.getApiKey());
-            request.setField(channelField, value);
+        if (mapping != null) {
+            int channelId = mapping.getChannelId();
+            short channelField = mapping.getChannelField();        
+            ThingSpeakRequest request = getRequest(channelId);
+    
+            if (request != null ) {
+                request.setField(channelField, value);
+            } else {
+                logger.error("no request to add topic");
+            }
+            
+        } else {
+            logger.info("topic: [" + topic + "] to be ignored (not in config)");
         }
+
     }
 
     public void send() {

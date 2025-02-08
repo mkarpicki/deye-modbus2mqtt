@@ -47,12 +47,16 @@ public class Starter {
 
             ThingSpeakSender thingSpeakSender = new ThingSpeakSender(mapping, channels);
 
-            // // @todo REMOVE ME AFTER TEST :)
+            // // // @todo REMOVE ME AFTER TEST :)
             // thingSpeakSender.add("/battery/soc", "21");
+            // thingSpeakSender.add("/battery/sox", "-21");
             // thingSpeakSender.add("/battery/temperature", "22");
-            // thingSpeakSender.add("/battery/power", "23");
-            // thingSpeakSender.add("/grid/out/phase/A/power", "5");
+            // thingSpeakSender.add("/battery/power", "23W");
+            // thingSpeakSender.add("/grid/out/phase/A/power", "50");
             // thingSpeakSender.add("/inverter/load/phase/A/power", "55.6");
+            // thingSpeakSender.send();
+
+            // thingSpeakSender.add("/battery/soc", "44");
             // thingSpeakSender.send();
 
             SerialParameters portParams = new SerialParameters();
