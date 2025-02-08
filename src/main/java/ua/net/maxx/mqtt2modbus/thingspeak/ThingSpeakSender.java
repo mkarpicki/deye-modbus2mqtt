@@ -1,5 +1,10 @@
 package ua.net.maxx.mqtt2modbus.thingspeak;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.HashMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +39,7 @@ public class ThingSpeakSender {
             }
         }
 
-        public short send() {
+        public void send() {
             StringBuilder url = new StringBuilder(apiHost);
             short i;
             boolean doSend = false;
@@ -48,10 +53,25 @@ public class ThingSpeakSender {
                 }
             }
             if (doSend) {
+
+                String sUrl = url.toString();
+                HttpClient client = HttpClient.newBuilder().build();
+
+                HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(sUrl))
+                    //.timeout(Duration.ofMinutes(2))
+                    .header("Content-Type", "application/json")
+                    .GET()
+                    .build();
+                client.sendAsync(request, BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenAccept(System.out::println);  
+
                 System.out.println(url.toString());
+        
+
             }
 
-            return 200;
         }
 
     }
