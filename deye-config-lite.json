@@ -1,6 +1,6 @@
 {
     "modbus": {
-      "port": "COM10",
+      "port": "/dev/ttyACM0",
       "rate": 9600
     },
     "devices": [

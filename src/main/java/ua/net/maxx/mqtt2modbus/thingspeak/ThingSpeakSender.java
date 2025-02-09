@@ -1,10 +1,7 @@
 package ua.net.maxx.mqtt2modbus.thingspeak;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -55,6 +52,7 @@ public class ThingSpeakSender {
             if (doSend) {
 
                 String sUrl = url.toString();
+                /*
                 HttpClient client = HttpClient.newBuilder().build();
 
                 HttpRequest request = HttpRequest.newBuilder()
@@ -66,14 +64,22 @@ public class ThingSpeakSender {
                 client.sendAsync(request, BodyHandlers.ofString())
                     .thenApply(HttpResponse::body)
                     .thenAccept(System.out::println);  
+                */
 
+                try {
+                    URL obj = new URL(sUrl);
+                    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+                    con.setRequestMethod("GET");
+                    int responseCode = con.getResponseCode();
+                    System.out.println(Integer.toString(responseCode));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+             
                 System.out.println(url.toString());
         
-
             }
-
         }
-
     }
 
     private static final Logger logger = LogManager.getLogger();
