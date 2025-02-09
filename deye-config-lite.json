@@ -96,12 +96,12 @@
             "numberRegisters": 6,
             "type": 3,
             "registers": [
-              { "factor": 1, "name": "Alert 1", "offset": 0, "topic": "/inverter/alerts/1", "type": "U16" },
-              { "factor": 1, "name": "Alert 2", "offset": 1, "topic": "/inverter/alerts/2", "type": "U16" },
-              { "factor": 1, "name": "Alert 3", "offset": 2, "topic": "/inverter/alerts/3", "type": "U16" },
-              { "factor": 1, "name": "Alert 4", "offset": 3, "topic": "/inverter/alerts/4", "type": "U16" },
-              { "factor": 1, "name": "Alert 5", "offset": 4, "topic": "/inverter/alerts/5", "type": "U16" },
-              { "factor": 1, "name": "Alert 6", "offset": 5, "topic": "/inverter/alerts/6", "type": "U16" }
+              { "factor": 1, "name": "Warning Message Word 1", "offset": 0, "topic": "/inverter/alerts/warning/1", "type": "U16" },
+              { "factor": 1, "name": "Warning Message Word 2", "offset": 1, "topic": "/inverter/alerts/warning/2", "type": "U16" },
+              { "factor": 1, "name": "Fault Information Word 1", "offset": 2, "topic": "/inverter/alerts/fault/1", "type": "U16" },
+              { "factor": 1, "name": "Fault Information Word 2", "offset": 3, "topic": "/inverter/alerts/fault/2", "type": "U16" },
+              { "factor": 1, "name": "Fault Information Word 3", "offset": 4, "topic": "/inverter/alerts/fault/3", "type": "U16" },
+              { "factor": 1, "name": "Fault Information Word 4", "offset": 5, "topic": "/inverter/alerts/fault/4", "type": "U16" }
             ]
           }
         ]
