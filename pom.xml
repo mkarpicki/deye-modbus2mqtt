@@ -96,6 +96,11 @@
                         <configuration>
                             <classifier>spring-boot</classifier>
                             <mainClass>ua.net.maxx.mqtt2modbus.Starter</mainClass>
+                            <archive>
+                                <manifestEntries>
+                                    <Multi-Release>true</Multi-Release>
+                                </manifestEntries>
+                            </archive>                            
                         </configuration>
                     </execution>
                 </executions>

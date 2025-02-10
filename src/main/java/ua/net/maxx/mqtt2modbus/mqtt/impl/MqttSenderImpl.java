@@ -2,19 +2,21 @@ package ua.net.maxx.mqtt2modbus.mqtt.impl;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
+
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import ua.net.maxx.mqtt2modbus.mqtt.MqttSender;
 
+import ua.net.maxx.mqtt2modbus.mqtt.MqttSender;
+/*
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+ */
 public class MqttSenderImpl implements MqttSender {
 
-    private static Logger logger = LogManager.getLogger();
+    //private static Logger logger = LogManager.getLogger();
 
     private final IMqttClient client;
 
@@ -39,7 +41,7 @@ public class MqttSenderImpl implements MqttSender {
         try {
             client.publish(topic, msg);
         } catch (MqttException e) {
-            logger.error("Error publish MQTT data", e);
+            //logger.error("Error publish MQTT data", e);
         }
     }
 }

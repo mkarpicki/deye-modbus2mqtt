@@ -6,9 +6,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Timer;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.ghgande.j2mod.modbus.Modbus;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
 import com.google.gson.Gson;
@@ -24,7 +21,10 @@ import ua.net.maxx.mqtt2modbus.timer.BridgeTask;
 
 public class Starter {
 
-    private static final Logger logger = LogManager.getLogger();
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+
+    //private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
         try {
@@ -72,9 +72,9 @@ public class Starter {
             
             start(portParams, thingSpeakSender, config);
 
-            logger.info("Bridge Timer scheduled");
+            //logger.info("Bridge Timer scheduled");
         } catch (Exception e) {
-            logger.error("Error starting app", e);
+            //logger.error("Error starting app", e);
         }
     }
 

@@ -4,9 +4,6 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.AbstractModbusMaster;
 import com.ghgande.j2mod.modbus.facade.ModbusSerialMaster;
@@ -20,7 +17,7 @@ import ua.net.maxx.mqtt2modbus.modbus.ModbusService;
 
 public class ModbusServiceImpl implements ModbusService {
 
-    private static final Logger logger = LogManager.getLogger();
+    //private static final Logger logger = LogManager.getLogger();
 
     //private final SerialParameters portParams;
     private final AbstractModbusMaster master;
@@ -45,15 +42,15 @@ public class ModbusServiceImpl implements ModbusService {
 
     @Override
     public Map<String, String> getData(Device device) {
-        logger.debug("Start getting data for device: {}", device.getDeviceId());
+        //logger.debug("Start getting data for device: {}", device.getDeviceId());
         Map<String, String> data = new HashMap<>();
         String deviceTopic = device.getTopic();
         device.getData().forEach(description -> {
             try {
                 if (description.getType() == 3) {
-                    logger.debug("Start getting data for registers with start: {}", description.getStartRegister());
+                    //logger.debug("Start getting data for registers with start: {}", description.getStartRegister());
                     Register[] registersData = readMultipleRegisters(device.getDeviceId(), description.getStartRegister(), description.getNumberRegisters());
-                    logger.debug("Got data for registers with start: {}", description.getStartRegister());
+                    //logger.debug("Got data for registers with start: {}", description.getStartRegister());
                     description.getRegisters().forEach(register -> {
                         int off = register.getOffset();
                         ValueType valueType = register.getType();
@@ -72,10 +69,10 @@ public class ModbusServiceImpl implements ModbusService {
                     });
                 }
             } catch (Exception e) {
-                logger.error("Error on get modbus data: {}", e.getMessage());
+                //logger.error("Error on get modbus data: {}", e.getMessage());
             }
         });
-        logger.debug("Finish getting data for device: {}", device.getDeviceId());
+        //logger.debug("Finish getting data for device: {}", device.getDeviceId());
         return data;
     }
 

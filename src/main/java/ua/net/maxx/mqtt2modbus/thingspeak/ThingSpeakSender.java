@@ -1,11 +1,14 @@
 package ua.net.maxx.mqtt2modbus.thingspeak;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
+//import java.net.HttpURLConnection;
+//import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.HashMap;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.w3c.dom.ranges.RangeException;
 
 public class ThingSpeakSender {
@@ -52,7 +55,7 @@ public class ThingSpeakSender {
             if (doSend) {
 
                 String sUrl = url.toString();
-                /*
+                
                 HttpClient client = HttpClient.newBuilder().build();
 
                 HttpRequest request = HttpRequest.newBuilder()
@@ -64,8 +67,8 @@ public class ThingSpeakSender {
                 client.sendAsync(request, BodyHandlers.ofString())
                     .thenApply(HttpResponse::body)
                     .thenAccept(System.out::println);  
-                */
-
+                
+/*
                 try {
                     URL obj = new URL(sUrl);
                     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -75,14 +78,14 @@ public class ThingSpeakSender {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-             
+*/
                 System.out.println(url.toString());
         
             }
         }
     }
 
-    private static final Logger logger = LogManager.getLogger();
+    //private static final Logger logger = LogManager.getLogger();
 
     private final HashMap<String, Channel> channels; 
     private final HashMap<String, Mapping> mappings;
@@ -105,7 +108,7 @@ public class ThingSpeakSender {
                 return r; 
             } else {
                 //todo consider raising exception
-                logger.error("No apiKey for channel: [" + sChannelId + "]");
+                //logger.error("No apiKey for channel: [" + sChannelId + "]");
             }
                
         }        
@@ -123,11 +126,11 @@ public class ThingSpeakSender {
             if (request != null ) {
                 request.setField(channelField, value);
             } else {
-                logger.error("no request to add topic");
+                //logger.error("no request to add topic");
             }
             
         } else {
-            logger.info("topic: [" + topic + "] to be ignored (not in config)");
+            //logger.info("topic: [" + topic + "] to be ignored (not in config)");
         }
 
     }
