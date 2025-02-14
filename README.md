@@ -24,7 +24,11 @@ https://kellerza.github.io/sunsynk/guide/wiring
 https://solarenergyconcepts.co.uk/practical-and-diy/crc-error-solar-assistant/
 https://github.com/kbialek/deye-inverter-mqtt/blob/main/ha_definitions/deye_hybrid_map.yaml
 https://github.com/StephanJoubert/home_assistant_solarman/blob/main/custom_components/solarman/inverter_definitions/deye_sg04lp3.yaml
+https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu
 
 # todo
 - rename package from original one as no mqtt integration in place anymore
 - consider moving "status"(500) reg to separate channel with alerts (when I confirm I get other alerts and channel is properly utilized, for now keep it with inverter & power channel fields)
+- fix logger issue on rpi
+- add env to read path
+- delete jar from repo

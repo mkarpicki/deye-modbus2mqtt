@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.AbstractModbusMaster;
 import com.ghgande.j2mod.modbus.facade.ModbusSerialMaster;
-import com.ghgande.j2mod.modbus.procimg.InputRegister;
+//import com.ghgande.j2mod.modbus.procimg.InputRegister;
 import com.ghgande.j2mod.modbus.procimg.Register;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
 
@@ -38,10 +38,10 @@ public class ModbusServiceImpl implements ModbusService {
         return master.readMultipleRegisters(unitID, address, count);
     }
 
-    private InputRegister[] readInputRegisters(int unitID, int address, int count) throws ModbusException {
-        // code = 4
-        return master.readInputRegisters(unitID, address, count);
-    }
+    // private InputRegister[] readInputRegisters(int unitID, int address, int count) throws ModbusException {
+    //     // code = 4
+    //     return master.readInputRegisters(unitID, address, count);
+    // }
 
     @Override
     public Map<String, String> getData(Device device) {
