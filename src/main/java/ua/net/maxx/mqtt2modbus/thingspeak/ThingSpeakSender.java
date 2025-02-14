@@ -1,7 +1,10 @@
 package ua.net.maxx.mqtt2modbus.thingspeak;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.HashMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +12,18 @@ import org.apache.logging.log4j.Logger;
 import org.w3c.dom.ranges.RangeException;
 
 public class ThingSpeakSender {
+
+    /*
+     * 
+-import java.net.HttpURLConnection;
+-import java.net.URL;
++import java.net.URI;^M
++import java.net.http.HttpClient;^M
++import java.net.http.HttpRequest;^M
++import java.net.http.HttpResponse;^M
++import java.net.http.HttpResponse.BodyHandlers;^M
+     * 
+     */
 
     private class ThingSpeakRequest {
         private final String apiHost = "https://api.thingspeak.com";
@@ -52,7 +67,7 @@ public class ThingSpeakSender {
             if (doSend) {
 
                 String sUrl = url.toString();
-                /*
+                
                 HttpClient client = HttpClient.newBuilder().build();
 
                 HttpRequest request = HttpRequest.newBuilder()
@@ -64,17 +79,17 @@ public class ThingSpeakSender {
                 client.sendAsync(request, BodyHandlers.ofString())
                     .thenApply(HttpResponse::body)
                     .thenAccept(System.out::println);  
-                */
+                
 
-                try {
-                    URL obj = new URL(sUrl);
-                    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-                    con.setRequestMethod("GET");
-                    int responseCode = con.getResponseCode();
-                    System.out.println(Integer.toString(responseCode));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+                // try {
+                //     URL obj = new URL(sUrl);
+                //     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+                //     con.setRequestMethod("GET");
+                //     int responseCode = con.getResponseCode();
+                //     System.out.println(Integer.toString(responseCode));
+                // } catch (Exception e) {
+                //     System.out.println(e.getMessage());
+                // }
              
                 System.out.println(url.toString());
         
