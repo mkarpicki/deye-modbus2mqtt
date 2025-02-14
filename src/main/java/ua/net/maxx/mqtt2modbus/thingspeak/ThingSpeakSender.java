@@ -7,8 +7,8 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.HashMap;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.ranges.RangeException;
 
 public class ThingSpeakSender {
@@ -97,7 +97,7 @@ public class ThingSpeakSender {
         }
     }
 
-    private static final Logger logger = LogManager.getLogger();
+    private final static Logger logger = LoggerFactory.getLogger(ThingSpeakSender.class);
 
     private final HashMap<String, Channel> channels; 
     private final HashMap<String, Mapping> mappings;

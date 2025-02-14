@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Timer;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ghgande.j2mod.modbus.Modbus;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
@@ -24,7 +24,8 @@ import ua.net.maxx.mqtt2modbus.timer.BridgeTask;
 
 public class Starter {
 
-    private static final Logger logger = LogManager.getLogger();
+    //private static final Logger logger = LoggerFactory.getLogger();
+    private final static Logger logger = LoggerFactory.getLogger(Starter.class);
 
     public static void main(String[] args) {
         try {
@@ -50,7 +51,7 @@ public class Starter {
 
             ThingSpeakSender thingSpeakSender = new ThingSpeakSender(mapping, channels);
 
-            // // // @todo REMOVE ME AFTER TEST :)
+            // // @todo REMOVE ME AFTER TEST :)
             // thingSpeakSender.add("/battery/soc", "21");
             // thingSpeakSender.add("/battery/sox", "-21");
             // thingSpeakSender.add("/battery/temperature", "10");

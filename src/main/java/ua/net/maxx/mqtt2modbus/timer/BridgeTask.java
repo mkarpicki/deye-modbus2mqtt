@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimerTask;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.reactivex.annotations.Nullable;
 import ua.net.maxx.mqtt2modbus.config.Config;
@@ -19,7 +19,7 @@ public class BridgeTask extends TimerTask {
 
     private final List<DataListener> listeners = new ArrayList<>();
 
-    private static final Logger logger = LogManager.getLogger();
+    private final static Logger logger = LoggerFactory.getLogger(BridgeTask.class);
 
     @Nullable
     //private final MqttSender mqttSender;

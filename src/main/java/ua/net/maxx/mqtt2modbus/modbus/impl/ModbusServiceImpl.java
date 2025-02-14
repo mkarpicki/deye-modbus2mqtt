@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ghgande.j2mod.modbus.ModbusException;
 import com.ghgande.j2mod.modbus.facade.AbstractModbusMaster;
@@ -19,7 +19,8 @@ import ua.net.maxx.mqtt2modbus.modbus.ModbusService;
 
 public class ModbusServiceImpl implements ModbusService {
 
-    private static final Logger logger = LogManager.getLogger();
+    //private static final Logger logger = LogManager.getLogger();
+    private final static Logger logger = LoggerFactory.getLogger(ModbusServiceImpl.class);
 
     //private final SerialParameters portParams;
     private final AbstractModbusMaster master;

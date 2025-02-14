@@ -2,19 +2,20 @@ package ua.net.maxx.mqtt2modbus.mqtt.impl;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
+
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import ua.net.maxx.mqtt2modbus.mqtt.MqttSender;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import ua.net.maxx.mqtt2modbus.mqtt.MqttSender;
 
 public class MqttSenderImpl implements MqttSender {
 
-    private static Logger logger = LogManager.getLogger();
+    private final static Logger logger = LoggerFactory.getLogger(MqttSenderImpl.class);
 
     private final IMqttClient client;
 
