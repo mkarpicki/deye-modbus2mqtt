@@ -29,6 +29,5 @@ https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu
 # todo
 - rename package from original one as no mqtt integration in place anymore
 - consider moving "status"(500) reg to separate channel with alerts (when I confirm I get other alerts and channel is properly utilized, for now keep it with inverter & power channel fields)
-- fix logger issue on rpi
 - add env to read path
 - delete jar from repo
