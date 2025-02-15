@@ -38,22 +38,18 @@ public class ModbusServiceImpl implements ModbusService {
         return master.readMultipleRegisters(unitID, address, count);
     }
 
-    // private InputRegister[] readInputRegisters(int unitID, int address, int count) throws ModbusException {
-    //     // code = 4
-    //     return master.readInputRegisters(unitID, address, count);
-    // }
 
     @Override
     public Map<String, String> getData(Device device) {
-        logger.debug("Start getting data for device: {}", device.getDeviceId());
+        logger.debug("Start getting data for device: {}" +  device.getDeviceId());
         Map<String, String> data = new HashMap<>();
         String deviceTopic = device.getTopic();
         device.getData().forEach(description -> {
             try {
                 if (description.getType() == 3) {
-                    logger.debug("Start getting data for registers with start: {}", description.getStartRegister());
+                    logger.debug("Start getting data for registers with start: " +  description.getStartRegister());
                     Register[] registersData = readMultipleRegisters(device.getDeviceId(), description.getStartRegister(), description.getNumberRegisters());
-                    logger.debug("Got data for registers with start: {}", description.getStartRegister());
+                    logger.debug("Got data for registers with start: " +  description.getStartRegister());
                     description.getRegisters().forEach(register -> {
                         int off = register.getOffset();
                         ValueType valueType = register.getType();
@@ -72,10 +68,10 @@ public class ModbusServiceImpl implements ModbusService {
                     });
                 }
             } catch (Exception e) {
-                logger.error("Error on get modbus data: {}", e.getMessage());
+                logger.error("Error on get modbus data: " +  e.getMessage());
             }
         });
-        logger.debug("Finish getting data for device: {}", device.getDeviceId());
+        logger.debug("Finish getting data for device: " +  device.getDeviceId());
         return data;
     }
 

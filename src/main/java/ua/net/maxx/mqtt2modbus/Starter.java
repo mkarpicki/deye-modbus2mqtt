@@ -82,7 +82,7 @@ public class Starter {
 
             logger.info("Bridge Timer scheduled");
         } catch (Exception e) {
-            logger.error("Error starting app", e.getMessage());
+            logger.error("Error starting app " + e.getMessage());
         }
     }
 

@@ -41,7 +41,7 @@ public class BridgeTask extends TimerTask {
             Map<String, String> data = modbusService.getData(device);
             data.entrySet().forEach(entry -> {
                 listeners.forEach(listener -> listener.publish(entry.getKey(), entry.getValue()));
-                logger.debug("topic: {}, payload: {}", entry.getKey(), entry.getValue());
+                logger.debug("topic: {}, payload: {} " + entry.getKey(), entry.getValue());
                 thingSpeakSender.add(entry.getKey(), entry.getValue());
             });
         });
