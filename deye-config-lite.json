@@ -38,9 +38,14 @@
               { "factor": 1, "name": "A phase power on the inner side of the grid", "offset": 0, "topic": "/grid/in/phase/A/power", "type": "S16" },
               { "factor": 1, "name": "B phase power on the inner side of the grid", "offset": 1, "topic": "/grid/in/phase/B/power", "type": "S16" },
               { "factor": 1, "name": "C phase power on the inner side of the grid", "offset": 2, "topic": "/grid/in/phase/C/power", "type": "S16" },
+              { "factor": 1, "name": "Total active power from side to side of the grid", "offset": 3, "topic": "/grid/in/phase/total/power/side2side", "type": "S16"},
+              { "factor": 1, "name": "Grid side - inside total apparent power", "offset": 4, "topic": "/grid/in/phase/total/power/apparent", "type": "U16"},
               { "factor": 1, "name": "Out-of-grid - power A", "offset": 12, "topic": "/grid/out/phase/A/power", "type": "S16" },
               { "factor": 1, "name": "Out-of-grid - power B", "offset": 13, "topic": "/grid/out/phase/B/power", "type": "S16" },
-              { "factor": 1, "name": "Out-of-grid - power C", "offset": 14, "topic": "/grid/out/phase/C/power", "type": "S16" }
+              { "factor": 1, "name": "Out-of-grid - power C", "offset": 14, "topic": "/grid/out/phase/C/power", "type": "S16" },
+              { "factor": 1, "name": "Out-of-grid –total power", "offset": 15, "topic": "/grid/out/phase/total/power", "type": "S16"},
+              { "factor": 1, "name": "Out-of-grid –total apparent power", "offset": 16, "topic": "/grid/out/phase/total/power/apparent", "type": "U16"},
+              { "factor": 1, "name": "Grid side total power", "offset": 21, "topic": "/grid/side/phase/total/power", "type": "U16"}
             ]
           },
           {
@@ -51,7 +56,9 @@
             "registers": [
               { "factor": 1, "name": "Load phase power A", "offset": 10, "topic": "/inverter/load/phase/A/power", "type": "S16" },
               { "factor": 1, "name": "Load phase power B", "offset": 11, "topic": "/inverter/load/phase/B/power", "type": "S16" },
-              { "factor": 1, "name": "Load phase power C", "offset": 12, "topic": "/inverter/load/phase/C/power", "type": "S16" }
+              { "factor": 1, "name": "Load phase power C", "offset": 12, "topic": "/inverter/load/phase/C/power", "type": "S16" },
+              { "factor": 1, "name": "Load phase power total", "offset": 13, "topic": "/inverter/load/phase/total/power", "type": "S16" },
+              { "factor": 1, "name": "Load phase power total apparent", "offset": 14, "topic": "/inverter/load/phase/total/powe/apparent", "type": "S16" }
             ]
           },
           {

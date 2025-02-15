@@ -26,25 +26,32 @@ public class Starter {
 
     //private static final Logger logger = LoggerFactory.getLogger();
     private final static Logger logger = LoggerFactory.getLogger(Starter.class);
+    private static String configPath = "";
+
+    private static String getConfigPath(String fileName) {
+        return configPath + fileName;
+    } 
 
     public static void main(String[] args) {
+
         try {
-            /*
-            Yaml yaml = new Yaml();
-            InputStream inputStream = new BufferedInputStream(new FileInputStream("deye_config_lite.yaml"));
-            Config config = yaml.loadAs(inputStream, Config.class);
-            */
+
+            if (args.length > 0) {
+                configPath = (args[0].isEmpty()) ? "" : args[0];
+            }
+
+            logger.debug("configPath: " + configPath);    
             
             Gson g = new Gson();
             JsonReader reader;
             
-            reader = new JsonReader(new FileReader("deye-config-lite.json")); 
+            reader = new JsonReader(new FileReader(getConfigPath("deye-config-lite.json"))); 
             Config config = g.fromJson(reader, Config.class);
 
-            reader = new JsonReader(new FileReader("deye-thingspeak-mapping.json"));            
+            reader = new JsonReader(new FileReader(getConfigPath("deye-thingspeak-mapping.json")));            
             Mapping[] mapping = g.fromJson(reader, Mapping[].class);
 
-            reader = new JsonReader(new FileReader("thingspeak-config.json"));  
+            reader = new JsonReader(new FileReader(getConfigPath("thingspeak-config.json")));  
             Channel[] channels = g.fromJson(reader, Channel[].class); 
 
             reader.close();

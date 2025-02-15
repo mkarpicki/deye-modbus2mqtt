@@ -19,12 +19,16 @@ Fork Tested with: Deye SUN-8K-SG04LP3-EU
 - create service [How to convert jar file to service](https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu)
 
 # Useful links
+https://phoenixnap.com/kb/install-java-raspberry-pi
+https://raspberrypi.stackexchange.com/questions/96455/how-do-i-make-a-java-application-i-made-run-as-a-deamon
 
 https://kellerza.github.io/sunsynk/guide/wiring
 https://solarenergyconcepts.co.uk/practical-and-diy/crc-error-solar-assistant/
 https://github.com/kbialek/deye-inverter-mqtt/blob/main/ha_definitions/deye_hybrid_map.yaml
 https://github.com/StephanJoubert/home_assistant_solarman/blob/main/custom_components/solarman/inverter_definitions/deye_sg04lp3.yaml
+
 https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu
+
 
 # todo
 - rename package from original one as no mqtt integration in place anymore

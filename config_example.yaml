@@ -28,8 +28,8 @@ devices:
           - { factor: 1, name: A phase power on the inner side of the grid, offset: 0, topic: /grid/in/phase/A/power, type: S16}
           - { factor: 1, name: B phase power on the inner side of the grid, offset: 1, topic: /grid/in/phase/B/power, type: S16}
           - { factor: 1, name: C phase power on the inner side of the grid, offset: 2, topic: /grid/in/phase/C/power, type: S16}
-          - { factor: 1, name: Total active power from side to side of the grid, offset: 3, topic: /grid/in/phase/total/pover/side2side, type: S16}
-          - { factor: 1, name: Grid side - inside total apparent power, offset: 4, topic: /grid/in/phase/total/pover/apparent, type: U16}
+          - { factor: 1, name: Total active power from side to side of the grid, offset: 3, topic: /grid/in/phase/total/power/side2side, type: S16}
+          - { factor: 1, name: Grid side - inside total apparent power, offset: 4, topic: /grid/in/phase/total/power/apparent, type: U16}
           - { factor: 0.01, name: Grid-side frequency, offset: 5, topic: /grid/frequency, type: U16}
           - { factor: 0.01, name: grid side inner current A, offset: 6, topic: /grid/in/phase/A/current, type: S16}
           - { factor: 0.01, name: grid side inner current B, offset: 7, topic: /grid/in/phase/B/current, type: S16}
