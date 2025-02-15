@@ -91,7 +91,7 @@ public class ThingSpeakSender {
                 //     System.out.println(e.getMessage());
                 // }
              
-                System.out.println(url.toString());
+                //System.out.println(url.toString());
         
             }
         }
@@ -136,13 +136,14 @@ public class ThingSpeakSender {
             ThingSpeakRequest request = getRequest(channelId);
     
             if (request != null ) {
+                logger.info("topic: [" + topic + "] set value: " + value + " in field " + channelField);
                 request.setField(channelField, value);
             } else {
                 logger.error("no request to add topic");
             }
             
         } else {
-            logger.info("topic: [" + topic + "] to be ignored (not in config)");
+            logger.warn("topic: [" + topic + "] to be ignored (not in config)");
         }
 
     }

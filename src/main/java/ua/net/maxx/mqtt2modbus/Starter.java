@@ -24,7 +24,6 @@ import ua.net.maxx.mqtt2modbus.timer.BridgeTask;
 
 public class Starter {
 
-    //private static final Logger logger = LoggerFactory.getLogger();
     private final static Logger logger = LoggerFactory.getLogger(Starter.class);
     private static String configPath = "";
 
@@ -78,28 +77,33 @@ public class Starter {
             portParams.setParity(0);
             portParams.setEncoding(Modbus.SERIAL_ENCODING_RTU);
             
+            //tryToStart(portParams, thingSpeakSender, config);
             start(portParams, thingSpeakSender, config);
 
             logger.info("Bridge Timer scheduled");
         } catch (Exception e) {
-            logger.error("Error starting app", e);
+            logger.error("Error starting app", e.getMessage());
         }
     }
 
     private static void start(SerialParameters portParams, ThingSpeakSender thingSpeakSender, Config config) throws Exception {
+        short modbusTimeScheduleInSeconds = 20 * 1000;
+        ModbusService modbusService = new ModbusServiceImpl(portParams);
+
+        BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
+        Timer timer1 = new Timer();
+        timer1.schedule(bridgeTask, Starter.getNextStartDate(), modbusTimeScheduleInSeconds);
+    }
+
+    private static void tryToStart(SerialParameters portParams, ThingSpeakSender thingSpeakSender, Config config) throws Exception {
 
         short i = 0;
         short tries = 3;
         short retryOnStartFailureDelayInSeconds = 3 * 1000;
-        short modbusTimeScheduleInSeconds = 20 * 1000;
 
         while(true) {
             try {
-                ModbusService modbusService = new ModbusServiceImpl(portParams);
-
-                BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
-                Timer timer1 = new Timer();
-                timer1.schedule(bridgeTask, Starter.getNextStartDate(), modbusTimeScheduleInSeconds);
+                start(portParams, thingSpeakSender, config);
                 return;
             } catch (Exception e) {
                 // handle exception
