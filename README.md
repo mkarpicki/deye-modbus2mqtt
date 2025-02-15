@@ -17,6 +17,7 @@ Fork Tested with: Deye SUN-8K-SG04LP3-EU
 - prepare config file
 - copy jar and  config file to any directory
 - create service [How to convert jar file to service](https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu)
+- define port in deye-config-lite.json (example: windows COM10, linux: /dev/ttyACM0)
 
 # Useful links
 https://phoenixnap.com/kb/install-java-raspberry-pi

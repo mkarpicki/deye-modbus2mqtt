@@ -58,7 +58,7 @@
               { "factor": 1, "name": "Load phase power B", "offset": 11, "topic": "/inverter/load/phase/B/power", "type": "S16" },
               { "factor": 1, "name": "Load phase power C", "offset": 12, "topic": "/inverter/load/phase/C/power", "type": "S16" },
               { "factor": 1, "name": "Load phase power total", "offset": 13, "topic": "/inverter/load/phase/total/power", "type": "S16" },
-              { "factor": 1, "name": "Load phase power total apparent", "offset": 14, "topic": "/inverter/load/phase/total/powe/apparent", "type": "S16" }
+              { "factor": 1, "name": "Load phase power total apparent", "offset": 14, "topic": "/inverter/load/phase/total/power/apparent", "type": "S16" }
             ]
           },
           {
@@ -82,7 +82,8 @@
               { "factor": 0.1, "name": "Today discharge\tof the battery", "offset": 1, "topic": "/inverter/stat/battery/discharge/today", "type": "U16" },
               { "factor": 0.1, "name": "Day_GridBuy_Power Wh", "offset": 6, "topic": "/inverter/stat/grid/power/buy/today", "type": "U16" },
               { "factor": 0.1, "name": "Day_GridSell_Power Wh", "offset": 7, "topic": "/inverter/stat/grid/power/sell/today", "type": "U16" },
-              { "factor": 0.1, "name": "Day_Load_Power Wh", "offset": 12, "topic": "/inverter/stat/power/load/day", "type": "U16" }
+              { "factor": 0.1, "name": "Day_Load_Power Wh", "offset": 12, "topic": "/inverter/stat/power/load/day", "type": "U16" },
+              { "factor": 0.1, "name": "Day_PV_Power Wh", "offset": 15, "topic": "/inverter/stat/power/pv/day", "type": "U16"}
             ]
           },
           {

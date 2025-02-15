@@ -90,8 +90,8 @@ public class Starter {
 
         short i = 0;
         short tries = 3;
-        short delayInSeconds = 3 * 1000;
-        short modbusTimeScheduleInSeconds = 15 * 1000;
+        short retryOnStartFailureDelayInSeconds = 3 * 1000;
+        short modbusTimeScheduleInSeconds = 20 * 1000;
 
         while(true) {
             try {
@@ -103,7 +103,7 @@ public class Starter {
                 return;
             } catch (Exception e) {
                 // handle exception
-                Thread.sleep(delayInSeconds);
+                Thread.sleep(retryOnStartFailureDelayInSeconds);
                 if (++i == tries) throw e;
             }
         }
