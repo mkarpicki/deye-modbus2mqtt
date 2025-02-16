@@ -87,7 +87,7 @@ public class Starter {
     }
 
     private static void start(SerialParameters portParams, ThingSpeakSender thingSpeakSender, Config config) throws Exception {
-        short modbusTimeScheduleInSeconds = 20 * 1000;
+        int modbusTimeScheduleInSeconds = 60 * 1000;
         ModbusService modbusService = new ModbusServiceImpl(portParams);
 
         BridgeTask bridgeTask = new BridgeTask(thingSpeakSender, modbusService, config);
