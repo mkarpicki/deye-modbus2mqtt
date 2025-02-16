@@ -3,3 +3,4 @@
 /modbus2mqtt.iml
 /config.yaml
 .vscode/
+logs/

@@ -33,6 +33,9 @@ https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu
 
 # todo
 - rename package from original one as no mqtt integration in place anymore
-- consider moving "status"(500) reg to separate channel with alerts (when I confirm I get other alerts and channel is properly utilized, for now keep it with inverter & power channel fields)
 - delete jar from repo
 - read about log4J and test
+- test if I did need that mapping (removed due to lack of space in channel)
+-- { "channelId": 2814878, "channelField": 2, "topic": "/grid/in/phase/total/power/apparent" },
+- this one sends strange values
+-- { "channelId": 2814869, "channelField": 3, "topic": "/battery/power" },
