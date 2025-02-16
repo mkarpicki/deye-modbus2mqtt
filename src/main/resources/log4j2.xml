@@ -8,7 +8,7 @@
         <Console name="console" target="SYSTEM_OUT" follow="true">
             <PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
-        <File name="file" fileName="logs/app.log">
+        <File name="file" fileName="logs/deye-monitor.log">
             <PatternLayout>
                 <PatternLayout pattern="${LOG_PATTERN}"/>
             </PatternLayout>
