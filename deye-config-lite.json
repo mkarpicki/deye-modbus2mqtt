@@ -69,7 +69,7 @@
             "registers": [
               { "factor": 0.01, "name": "Battery Temperature", "offset": 0, "topic": "/battery/temperature", "type": "U16" },
               { "factor": 1, "name": "Battery SOC", "offset": 2, "topic": "/battery/soc", "type": "U16" },
-              { "factor": 1, "name": "Battery Power", "offset": 4, "topic": "/battery/power", "type": "U16" }
+              { "factor": 1, "name": "Battery Power", "offset": 4, "topic": "/battery/power", "type": "S16" }
             ]
           },
           {

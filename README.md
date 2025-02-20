@@ -30,11 +30,17 @@ https://github.com/StephanJoubert/home_assistant_solarman/blob/main/custom_compo
 
 https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu
 
+Status Enum 
+0 - standby
+1 - selfcheck
+2 - normal
+3 - alarm
+4 - fault
 
 # todo
 - rename package from original one as no mqtt integration in place anymore
 - delete jar from repo
-- read about log4J and test
+- log4j (does not update file on each new day)
 - test if I did need that mapping (removed due to lack of space in channel)
 -- { "channelId": 2814878, "channelField": 2, "topic": "/grid/in/phase/total/power/apparent" },
 - this one sends strange values
