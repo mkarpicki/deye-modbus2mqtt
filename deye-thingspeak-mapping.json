@@ -4,7 +4,6 @@
     { "channelId": 2814869, "channelField": 2, "topic": "/battery/temperature" },
     { "channelId": 2814869, "channelField": 3, "topic": "/battery/power" },
 
-    { "channelId": 2814877, "channelField": 1, "topic": "/inverter/run/state" },
     { "channelId": 2814877, "channelField": 2, "topic": "/inverter/stat/grid/power/buy/today" },
     { "channelId": 2814877, "channelField": 3, "topic": "/inverter/stat/grid/power/sell/today" },
     { "channelId": 2814877, "channelField": 4, "topic": "/inverter/stat/battery/charge/today" },
@@ -17,7 +16,7 @@
 
     { "channelId": 2814878, "channelField": 2, "topic": "/grid/in/phase/total/power/side2side" },
     { "channelId": 2814878, "channelField": 3, "topic": "/grid/out/phase/total/power" },
-    { "channelId": 2814878, "channelField": 4, "topic": "/grid/out/phase/total/power/apparent" },
+    { "channelId": 2814878, "channelField": 4, "topic": "/inverter/run/state" },
     { "channelId": 2814878, "channelField": 5, "topic": "/grid/side/phase/total/power"},
 
     { "channelId": 2814878, "channelField": 6, "topic": "/inverter/load/phase/total/power" },
