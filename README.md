@@ -40,8 +40,5 @@ Status Enum
 # todo
 - rename package from original one as no mqtt integration in place anymore
 - delete jar from repo
-- log4j (does not update file on each new day)
 - test if I did need that mapping (removed due to lack of space in channel)
 -- { "channelId": 2814878, "channelField": 2, "topic": "/grid/in/phase/total/power/apparent" },
-- this one sends strange values
--- { "channelId": 2814869, "channelField": 3, "topic": "/battery/power" },
