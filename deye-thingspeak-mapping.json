@@ -22,14 +22,6 @@
 
     { "channelId": 2814878, "channelField": 6, "topic": "/inverter/load/phase/total/power" },
     { "channelId": 2814878, "channelField": 7, "topic": "/inverter/load/phase/total/power/apparent" },
-    { "channelId": 2814878, "channelField": 8, "topic": "/inverter/output/phase/total/power" },
-    
-
-    { "channelId": 2827212, "channelField": 1, "topic": "/inverter/alerts/warning/1" },
-    { "channelId": 2827212, "channelField": 2, "topic": "/inverter/alerts/warning/2" },
-    { "channelId": 2827212, "channelField": 3, "topic": "/inverter/alerts/fault/1" },
-    { "channelId": 2827212, "channelField": 4, "topic": "/inverter/alerts/fault/2" },
-    { "channelId": 2827212, "channelField": 5, "topic": "/inverter/alerts/fault/3" },
-    { "channelId": 2827212, "channelField": 6, "topic": "/inverter/alerts/fault/4" }
+    { "channelId": 2814878, "channelField": 8, "topic": "/inverter/output/phase/total/power" }
 ]
 
